@@ -1,0 +1,23 @@
+#todo-container h2 {
+  margin-bottom: 0.5rem;
+}
+
+#todo-container input {
+  width: 100%;
+  padding: 0.6rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+#todo-container ul {
+  list-style: none;
+}
+
+#todo-container li {
+  padding: 0.5rem;
+  background-color: #f9f9f9;
+  border-bottom: 1px solid #eee;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+}

@@ -1,0 +1,32 @@
+#pomodoro-container h2 {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+#pomodoro-container .timer {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+#pomodoro-container .controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+#pomodoro-container button {
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: #ff6b6b;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+#pomodoro-container button:hover {
+  background-color: #e85a5a;
+}

@@ -1,0 +1,28 @@
+#news-container h2 {
+  margin-bottom: 0.5rem;
+}
+
+#news-container .news-item {
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+#news-container .news-title {
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 0.3rem;
+  text-decoration: none;
+  display: inline-block;
+}
+
+#news-container .news-description {
+  font-size: 0.95rem;
+  color: #666;
+}
+
+#news-container .news-source {
+  font-size: 0.8rem;
+  color: #999;
+  margin-top: 0.2rem;
+}
