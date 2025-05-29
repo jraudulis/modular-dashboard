@@ -21,3 +21,51 @@
   border-radius: 4px;
   margin-bottom: 0.5rem;
 }
+
+.btn{
+ font-family: 'Poppins', sans-serif;
+ letter-spacing: 1px;
+ background-color: #04AA6D; 
+ color: white;
+ border: none;
+ width: 100px;
+ margin: .5rem;
+ font-size: 1rem;
+ padding: 10px;
+ border-radius: 3px;
+ transition-duration: 0.4s;
+}
+
+.btn:hover{
+ background-color: #03915d;
+}
+
+.done-button{
+ background-color: #04AA6D;
+ color: white;
+ border: none;
+ border-radius: 3px;
+ padding: .5rem;
+ transition: .2s;
+}
+.del-button{
+ background-color: #FF5C5C;
+ color: white;
+ border: none;
+ border-radius: 3px;
+ padding: .5rem;
+ margin: .4rem .8rem;
+ transition: .2s;
+}
+
+.done-button:hover{
+ background-color: #03915d;
+}
+
+.del-button:hover{
+ background-color: #FF2E2E;
+}
+
+.finished{
+ text-decoration: line-through;
+}
