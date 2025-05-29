@@ -1,14 +1,14 @@
 const OPENWEATHER_API_KEY = '08ff5bfd6bbd0c08f59cd1c0c38d242b';
 const UNSPLASH_API_KEY = 'so2V6iCiqSgz7kgwSsRCx9r_Xb7S0z04bUZvTV8wIMs';
 
-function getLocationCoordinates() {
+function getLocationCoordinates(container) {
     navigator.geolocation.getCurrentPosition((pos) => {
     const { latitude, longitude } = pos.coords;
-    fetchTemperatureData(latitude, longitude);
+    fetchTemperatureData(latitude, longitude,container);
  });
 }
 
-async function fetchTemperatureData(latitude, longitude) {
+async function fetchTemperatureData(latitude, longitude, container) {
     try {
         const weatherResponse = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${OPENWEATHER_API_KEY}&units=metric`);
         
@@ -38,7 +38,6 @@ async function fetchTemperatureData(latitude, longitude) {
 
         }
         updateUI(container, weather);
-        // // await updateBackground();
 
     } catch (error) {
         alert(`Error: ${error.message}`);
@@ -49,18 +48,31 @@ function updateUI (container, weather) {
     container.querySelector('.icon').src = `https://openweathermap.org/img/wn/${weather.icon}@2x.png`;
     container.querySelector('.temp').textContent = `${weather.currentTempCelsius}°C`;
     container.querySelector('.location').textContent = `${weather.location}`;
+    hideLoader(container);
 
+}
+
+function displayLoader(container) {
+    container.querySelector('.weather-info').style.display = 'none';
+    container.querySelector('.loader').style.display = 'block';
+}
+
+function hideLoader(container) {
+    container.querySelector('.loader').style.display = 'none';
+    container.querySelector('.weather-info').style.display = 'flex';
 }
 
 export function initWeather (container) {
     container.innerHTML = `
     <h2>Weather</h2>
+    <div class="loader"></div>
   <div class="weather-info">
-    <span class="icon">icon</span>
+    <img class="icon" />
     <span class="temp">--°C</span>
     <span class="location">Fetching...</span>
   </div>
     `;
-
-    getLocationCoordinates();
+    
+    displayLoader(container);
+    getLocationCoordinates(container);
 }
