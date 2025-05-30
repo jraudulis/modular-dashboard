@@ -1,15 +1,18 @@
 
 function inputLength(container){
-  return container.querySelector('.input').value.length;
+  return container.querySelector('.input').value.trim().length > 0;
 } 
 
 //Function for creating li element with input value
 function createLi(container) {
+
   const input = container.querySelector('.input');
+  const list = container.querySelector('.list');
+
   const li = document.createElement("li");
   li.appendChild(document.createTextNode(input.value));
   delDoneButtons(li);
-  container.querySelector('.list').appendChild(li);
+  list.appendChild(li);
   input.value = "";
 }
 
@@ -21,8 +24,8 @@ function addLiAfterClick(container) {
 }
 
 //Function for adding li element after Enter keypress
-function addLiAfterKey(event, container){
- if ( inputLength(container) && event.key === "Enter") {
+function addLiAfterKey(event, container) {
+ if ( inputLength(container) && event.key === "Enter" ) {
    createLi(container);
   }
 }
@@ -51,20 +54,22 @@ done.addEventListener("click", function(){
 
 }
 
-
-
 export function initTodo (container) {
+
     container.innerHTML = `
      <h2> To Do List </h2>
      <input class="input" type="text" placeholder="enter item">
-     <button class="btn">Enter</button>
+     <button aria-label="add task" class="btn">Enter</button>
      <ul class="list"> </ul>
      `;
 
-    container.querySelector('.btn').addEventListener("click", () => {
+    const input = container.querySelector('.input');
+    const btn = container.querySelector('.btn');
+
+    btn.addEventListener("click", () => {
     addLiAfterClick(container);
     });
-    container.querySelector('.input').addEventListener("keydown", (event) => {
+    input.addEventListener("keydown", (event) => {
     addLiAfterKey(event, container);
     });
 

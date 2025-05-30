@@ -1,20 +1,4 @@
-#pomodoro-container h2 {
-  margin-bottom: 1rem;
-  text-align: center;
-}
 
-#pomodoro-container .timer {
-  font-size: 2.5rem;
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 1rem;
-}
-
-#pomodoro-container .controls {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-}
 
 #pomodoro-container button {
   padding: 0.5rem 1rem;
@@ -29,4 +13,52 @@
 
 #pomodoro-container button:hover {
   background-color: #e85a5a;
+}
+
+.pomodoro-widget {
+  font-family: sans-serif;
+  background: #f4f4f4;
+  border-radius: 12px;
+  padding: 20px;
+  width: auto;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.pomodoro-widget h2 {
+  margin-bottom: 10px;
+  font-size: 1.4em;
+}
+
+.timer-display {
+  font-size: 2.5em;
+  margin: 15px 0;
+  font-weight: bold;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.controls button {
+  padding: 8px 12px;
+  font-size: 0.9em;
+  border: none;
+  border-radius: 6px;
+  background-color: #0077ff;
+  color: white;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.controls button:hover {
+  background-color: #005fcc;
+}
+
+.status {
+  font-size: 0.95em;
+  color: #333;
 }
