@@ -1,20 +1,25 @@
 
-function startTimer (container) {
-let timeLeft = 25 * 60;
+function startTimer (container, state) {
+  // Check if the timer is already running and if it is exit function
+  if (state.intervalId !== null) return; 
 
-const interval = setInterval(() =>{
-  if (timeLeft > 0) {
-    timeLeft--;
-    updateUi(container, timeLeft);
-  } else {
-    clearInterval(interval);
-    alert('times up');
-  }
- }, 1000)  
+  const interval = setInterval(() =>{
+    if (state.timeLeft > 0) {
+      state.timeLeft--;
+      state.intervalId = interval;
+      updateUi(container, state);
+    } else {
+      clearInterval(interval);
+      alert('times up');
+    }
+  }, 1000)
 }
 
-function updateUi(container, timeLeft) {
-  container.querySelector('.timer-display').textContent = formatTime(timeLeft) ;
+
+   
+
+function updateUi(container, state) {
+  container.querySelector('.timer-display').textContent = formatTime(state.timeLeft) ;
 }
 
 function formatTime(seconds) {
@@ -24,6 +29,12 @@ function formatTime(seconds) {
 }
 
 export function initPomodoro (container) {
+
+  const state = {
+   timeLeft: 25 * 60,
+   intervalId: null
+  }
+
     container.innerHTML = `
     <div class="pomodoro-widget">
     <h2>Pomodoro Timer</h2>
@@ -37,5 +48,5 @@ export function initPomodoro (container) {
   </div>
     `;
     const startBtn = container.querySelector('.start-btn');
-    startBtn.addEventListener('click', startTimer(container));
+    startBtn.addEventListener('click', ()=> startTimer(container, state));
 }
