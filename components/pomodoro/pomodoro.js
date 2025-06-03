@@ -15,8 +15,19 @@ function startTimer (container, state) {
   }, 1000)
 }
 
+function pauseTimer(container, state) {
+  if (state.intervalId !== null) {
+    clearInterval(state.intervalId);
+    changeBtnUi(container);
+  } else if (state.intervalId === null) {
+    startTimer(container, state);
 
-   
+  }
+}
+
+function changeBtnUi(container) {
+  container.querySelector('.pause-btn').textContent = 'Resume';
+}
 
 function updateUi(container, state) {
   container.querySelector('.timer-display').textContent = formatTime(state.timeLeft) ;
@@ -47,6 +58,10 @@ export function initPomodoro (container) {
     <p class="status">Focus time</p>
   </div>
     `;
+    
     const startBtn = container.querySelector('.start-btn');
+    const pauseBtn = container.querySelector('.pause-btn');
+
     startBtn.addEventListener('click', ()=> startTimer(container, state));
+    pauseBtn.addEventListener('click', ()=> pauseTimer(container, state));
 }
