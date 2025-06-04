@@ -1,32 +1,36 @@
 
 function startTimer (container, state) {
   // Check if the timer is already running and if it is exit function
-  if (state.intervalId !== null) return; 
+  if (state.intervalId !== null ) return; 
 
   const interval = setInterval(() =>{
     if (state.timeLeft > 0) {
       state.timeLeft--;
-      state.intervalId = interval;
       updateUi(container, state);
     } else {
       clearInterval(interval);
       alert('times up');
     }
   }, 1000)
+  state.intervalId = interval;
 }
 
 function pauseTimer(container, state) {
   if (state.intervalId !== null) {
     clearInterval(state.intervalId);
-    changeBtnUi(container);
-  } else if (state.intervalId === null) {
+    state.intervalId = null;
+    state.isPaused = true;
+  } else if (state.intervalId === null && state.timeLeft > 0 && state.isPaused === true){
+    state.isPaused = false;
     startTimer(container, state);
-
   }
+   changeBtnUi(container, state);
 }
 
-function changeBtnUi(container) {
+function changeBtnUi(container, state) {
+  if (state.isPaused === true){
   container.querySelector('.pause-btn').textContent = 'Resume';
+  } else  container.querySelector('.pause-btn').textContent = 'Pause';
 }
 
 function updateUi(container, state) {
@@ -43,7 +47,8 @@ export function initPomodoro (container) {
 
   const state = {
    timeLeft: 25 * 60,
-   intervalId: null
+   intervalId: null,
+   isPaused: false,
   }
 
     container.innerHTML = `
