@@ -26,3 +26,38 @@
   color: #999;
   margin-top: 0.2rem;
 }
+
+.news-widget {
+  font-family: system-ui, sans-serif;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 1rem;
+  border-radius: 10px;
+  max-width: 400px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.news-widget h2 {
+  font-size: 1.2rem;
+  margin-bottom: 0.75rem;
+}
+
+.news-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.news-item {
+  margin-bottom: 0.5rem;
+}
+
+.news-link {
+  text-decoration: none;
+  color: #0077cc;
+  transition: color 0.2s;
+}
+
+.news-link:hover {
+  color: #005fa3;
+}
