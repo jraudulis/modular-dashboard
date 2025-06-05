@@ -17,10 +17,13 @@ function displayNews(container, articles) {
     const list = container.querySelector('.news-list');
     list.innerHTML = '';
 
-     articles.forEach(({ title, url, urlToImg }) => {
+     articles.forEach(({ title, url, urlToImage }) => {
+        const imageDiv = document.createElement('div');
+        imageDiv.classList.add('news-image-wrapper');
         const img = document.createElement('img');
-        img.src = urlToImg;
+        img.src = urlToImage;
         img.alt = title;
+        img.classList.add('news-image')
         const li = document.createElement('li');
         li.classList.add('news-item');
         const a = document.createElement('a');
@@ -30,7 +33,8 @@ function displayNews(container, articles) {
 
         li.appendChild(a);
         list.appendChild(li);
-        list.appendChild(img);
+        imageDiv.appendChild(img);
+        list.appendChild(imageDiv);
      })
 }
 
