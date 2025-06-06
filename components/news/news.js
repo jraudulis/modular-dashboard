@@ -20,21 +20,24 @@ function displayNews(container, articles) {
      articles.forEach(({ title, url, urlToImage }) => {
         const imageDiv = document.createElement('div');
         imageDiv.classList.add('news-image-wrapper');
+
         const img = document.createElement('img');
         img.src = urlToImage;
         img.alt = title;
         img.classList.add('news-image')
+
         const li = document.createElement('li');
         li.classList.add('news-item');
+
         const a = document.createElement('a');
         a.classList.add('news-link');
         a.href = url;
         a.textContent = title;
 
-        li.appendChild(a);
-        list.appendChild(li);
         imageDiv.appendChild(img);
         list.appendChild(imageDiv);
+        li.appendChild(a);
+        list.appendChild(li);
      })
 }
 

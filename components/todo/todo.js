@@ -56,12 +56,14 @@ done.addEventListener("click", function(){
 
 export function initTodo (container) {
 
-    container.innerHTML = `
-     <h2> To Do List </h2>
-     <input class="input" type="text" placeholder="enter item">
-     <button aria-label="add task" class="btn">Enter</button>
-     <ul class="list"> </ul>
-     `;
+   container.innerHTML = `
+    <div class="todo-widget">
+    <h2>Daily Tasks</h2>
+    <input class="input" type="text" placeholder="Enter item">
+    <button aria-label="add task" class="btn">Enter</button>
+    <ul class="list"></ul>
+    </div>
+  `;
 
     const input = container.querySelector('.input');
     const btn = container.querySelector('.btn');

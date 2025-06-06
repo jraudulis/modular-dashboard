@@ -30,7 +30,6 @@
 .news-widget {
   font-family: system-ui, sans-serif;
   background: #f9f9f9;
-  border: 1px solid #ddd;
   padding: 1rem;
   border-radius: 10px;
   max-width: 400px;
@@ -38,7 +37,6 @@
 }
 
 .news-widget h2 {
-  font-size: 1.2rem;
   margin-bottom: 0.75rem;
 }
 
@@ -54,6 +52,7 @@
 
 .news-link {
   text-decoration: none;
+  font-weight: 700;
   color: #0077cc;
   transition: color 0.2s;
 }
@@ -63,8 +62,6 @@
 }
 
 .news-image-wrapper {
-  width: 100px;
-  height: 70px;
   overflow: hidden;
 }
 

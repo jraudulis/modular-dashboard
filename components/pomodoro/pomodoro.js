@@ -1,11 +1,12 @@
 
 function startTimer (container, state) {
   // Check if the timer is already running and if it is exit function
-  if (state.intervalId !== null ) return; 
+  if (state.hasRun === true ) return; 
 
   const interval = setInterval(() =>{
     if (state.timeLeft > 0) {
       state.timeLeft--;
+      state.hasRun = true;
       updateUi(container, state);
     } else {
       clearInterval(interval);
@@ -27,10 +28,22 @@ function pauseTimer(container, state) {
    changeBtnUi(container, state);
 }
 
+function resetTimer(container, state) {
+  clearInterval(state.intervalId);
+  state.intervalId = null;
+  state.timeLeft = 25 * 60;
+  state.isReset = true;
+
+  updateUi(container, state);
+  changeBtnUi(container, state)
+}
+
 function changeBtnUi(container, state) {
   if (state.isPaused === true){
   container.querySelector('.pause-btn').textContent = 'Resume';
-  } else  container.querySelector('.pause-btn').textContent = 'Pause';
+  } else if (state.isPaused === false || state.isReset === true ) {
+    container.querySelector('.pause-btn').textContent = 'Pause';
+  }
 }
 
 function updateUi(container, state) {
@@ -47,8 +60,10 @@ export function initPomodoro (container) {
 
   const state = {
    timeLeft: 25 * 60,
+   hasRun: false,
    intervalId: null,
    isPaused: false,
+   isReset: false
   }
 
     container.innerHTML = `
@@ -66,7 +81,9 @@ export function initPomodoro (container) {
     
     const startBtn = container.querySelector('.start-btn');
     const pauseBtn = container.querySelector('.pause-btn');
+    const resetBtn = container.querySelector('.reset-btn');
 
     startBtn.addEventListener('click', ()=> startTimer(container, state));
     pauseBtn.addEventListener('click', ()=> pauseTimer(container, state));
+    resetBtn.addEventListener('click', ()=> resetTimer(container, state));
 }
