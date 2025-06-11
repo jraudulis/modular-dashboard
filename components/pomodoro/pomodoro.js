@@ -1,6 +1,7 @@
 
 function startTimer (container, state) {
 
+  if (state.isRunning || state.isPaused) return;
 
   const interval = setInterval(() =>{
     if (state.timeLeft > 0) {
@@ -26,9 +27,10 @@ function pauseTimer(container, state) {
 }
 
 function resumeTimer(container, state) {
-  if (state.isPaused && state.timeLeft > 0) {
+  if (state.isPaused && state.timeLeft > 0 ) {
     state.isPaused = false;
     startTimer(container, state);
+    updateButtonStates(container, state);
   }
 }
 
@@ -57,7 +59,7 @@ function updateButtonStates(container, state) {
   } else {
     startBtn.textContent = 'Start';
     startBtn.disabled = false;
-    pauseBtn.disabled = true;
+    pauseBtn.disabled = false;
   }
 }
 
@@ -99,12 +101,12 @@ export function initPomodoro (container) {
     const resetBtn = container.querySelector('.reset-btn');
 
     startBtn.addEventListener('click', () => {
-  if (state.isPaused) {
-    resumeTimer(container, state);
-  } else {
-    startTimer(container, state);
-  }
-});
+      if (state.isPaused) {
+        resumeTimer(container, state);
+      } else {
+        startTimer(container, state);
+      }
+    });
     pauseBtn.addEventListener('click', ()=> pauseTimer(container, state));
     resetBtn.addEventListener('click', ()=> resetTimer(container, state));
 }
