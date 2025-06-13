@@ -1,13 +1,14 @@
+// Normally all the API keys are stored in .Env variables on server
 const OPENWEATHER_API_KEY = '08ff5bfd6bbd0c08f59cd1c0c38d242b';
 const UNSPLASH_API_KEY = 'so2V6iCiqSgz7kgwSsRCx9r_Xb7S0z04bUZvTV8wIMs';
-
+// Get current location and pass the coordinates to function which fetches data based on coordinates
 function getLocationCoordinates(container) {
     navigator.geolocation.getCurrentPosition((pos) => {
     const { latitude, longitude } = pos.coords;
     fetchTemperatureData(latitude, longitude,container);
  });
 }
-
+// Fetch API weather data and extract description, current temperature in C, Feel like temperature, Location name and icon representing weather.
 async function fetchTemperatureData(latitude, longitude, container) {
     try {
         const weatherResponse = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${OPENWEATHER_API_KEY}&units=metric`);
@@ -43,7 +44,7 @@ async function fetchTemperatureData(latitude, longitude, container) {
         alert(`Error: ${error.message}`);
     }
 }
-
+// Update UI with data from weather object from fetched data from API
 function updateUI (container, weather) {
     container.querySelector('.icon').src = `https://openweathermap.org/img/wn/${weather.icon}@2x.png`;
     container.querySelector('.temp').textContent = `${weather.currentTempCelsius}°C`;

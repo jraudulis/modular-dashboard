@@ -9,8 +9,13 @@ function createLi(container) {
   const input = container.querySelector('.input');
   const list = container.querySelector('.list');
 
+  const span = document.createElement('span');
+  span.classList.add('todo-text');
+
   const li = document.createElement("li");
-  li.appendChild(document.createTextNode(input.value));
+  
+  span.appendChild(document.createTextNode(input.value));
+  li.appendChild(span)
   delDoneButtons(li);
   list.appendChild(li);
   input.value = "";
@@ -32,6 +37,9 @@ function addLiAfterKey(event, container) {
 
 //Function to attach Delete and Done buttons with corresponding click events
 function delDoneButtons(li){
+  const wrapper = document.createElement('div');
+  wrapper.classList.add('btn-wrapper');
+
  const del = document.createElement("button");
  del.appendChild(document.createTextNode("Delete"));
 
@@ -41,17 +49,17 @@ function delDoneButtons(li){
  del.classList.add("del-button");
  done.classList.add("done-button");
 
- li.appendChild(del);
- li.appendChild(done);
+ wrapper.append(done, del);
+ li.appendChild(wrapper);
 
 del.addEventListener("click", function(){
- del.parentNode.remove();
+ li.remove();
 });
 
 done.addEventListener("click", function(){
- this.parentNode.classList.toggle("finished");
+  const textSpan = li.querySelector('.todo-text');
+  textSpan.classList.toggle("finished");
 });
-
 }
 
 export function initTodo (container) {

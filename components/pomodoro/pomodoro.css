@@ -1,63 +1,105 @@
-
-
-#pomodoro-container button {
-  padding: 0.5rem 1rem;
-  border: none;
-  background-color: #ff6b6b;
-  color: white;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background 0.2s;
-}
-
-#pomodoro-container button:hover {
-  background-color: #e85a5a;
-}
-
-.pomodoro-widget {
-  font-family: sans-serif;
-  background: #f4f4f4;
-  border-radius: 12px;
-  padding: 20px;
-  width: auto;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  text-align: center;
-}
-
 .pomodoro-widget h2 {
-  margin-bottom: 10px;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.timer-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.timer-message {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 300px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  animation: pop-in 0.3s ease;
+}
+
+.timer-message h2 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.timer-message p {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.close-overlay-btn {
+  background: #04AA6D;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.close-overlay-btn:hover {
+  background: #03915d;
+}
+
+@keyframes pop-in {
+  from { transform: scale(0.95); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
 }
 
 .timer-display {
-  font-size: 2.5em;
-  margin: 15px 0;
+  font-size: 2.5rem;
   font-weight: bold;
+  margin: 1rem 0;
+  text-align: center;
 }
 
 .controls {
   display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 10px;
+  justify-content: space-between;
+  margin-bottom: 1rem;
 }
 
 .controls button {
-  padding: 8px 12px;
-  font-size: 0.9em;
+  flex: 1;
+  margin: 0 0.25rem;
+  padding: 0.6rem;
+  font-size: 1rem;
   border: none;
   border-radius: 6px;
-  background-color: #0077ff;
-  color: white;
-  cursor: pointer;
-  transition: background 0.2s ease;
+  color: #fff;
+  transition: background 0.3s ease;
 }
 
-.controls button:hover {
-  background-color: #005fcc;
+.start-btn {
+  background-color: #007bff;
+}
+.start-btn:hover {
+  background-color: #0062cc;
+}
+
+.pause-btn {
+  background-color: #ffc107;
+}
+.pause-btn:hover {
+  background-color: #e0a800;
+}
+
+.reset-btn {
+  background-color: #dc3545;
+}
+.reset-btn:hover {
+  background-color: #c82333;
 }
 
 .status {
-  font-size: 0.95em;
-  color: #333;
+  text-align: center;
+  color: #555;
 }
